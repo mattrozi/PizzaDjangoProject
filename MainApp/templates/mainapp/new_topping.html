@@ -1,0 +1,19 @@
+{% extends "MainApp/base.html" %}
+
+{% block content %}
+
+<p><a href="{%url 'MainApp:Pizza' Pizza.id %}">{{Pizza}} </a></p>
+
+<p> Add a new Topping </p>
+
+<form action="{% url 'MainApp:new_topping' Pizza.id %}" method='post'>
+
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button name="submit">Add Topping</button>
+
+
+</form>
+
+{% endblock content %}

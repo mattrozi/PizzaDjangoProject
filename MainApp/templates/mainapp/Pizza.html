@@ -1,0 +1,40 @@
+{% extends "MainApp/base.html" %}
+
+{% block page_header %}
+<h3>{{Pizza}}</h3>
+{% endblock page_header %}
+
+
+{% block content %}
+
+
+
+{% for t in Toppings %}
+
+    {{t.text|linebreaks}}
+
+{% empty %}
+<li> There are no toppings for this Pizza yet.</li>
+{% endfor %}
+
+</ul>
+
+<a href="{% url 'MainApp:new_comment' Pizza.id %}">Add a new comment:</a>
+
+<ul>
+    {% for ch in comments %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <p>{{ch.text|linebreaks}}</p>
+        </div>
+    </div>
+
+    {% empty %}
+    <li> There are no comments for this Pizza yet.</li>
+    {% endfor %}
+</ul>
+{% endblock content %}
+
+
+
+
